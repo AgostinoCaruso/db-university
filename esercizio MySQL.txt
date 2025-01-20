@@ -135,8 +135,45 @@ FROM
 WHERE 
     (`phone` IS NULL OR `phone` = '');
 
+---------------------------------------------------------------------
+--Inserire nella tabella degli studenti un nuovo record con i propri dati (per il campo
+ degree_id, inserire un valore casuale)-------------------------------------------------9
+UPDATE `students`
+SET 
+	`name` = "Agostino",
+    `surname` = "Caruso",
+    `degree_id` = RAND(999)
+WHERE 
+	`id` = 5;
 
+---------------------------------------------------------------------
+--Cambiare il numero dell’ufficio del professor Pietro Rizzo in 126--------------------10
+/*
+Prima runni questo codice e poi tramite l id cambi il valore desiderato
+SELECT
+	`id` AS `id`,
+    `name` AS `nome`,
+    `surname` AS `cognome`
+FROM
+	`teachers`
+WHERE
+	`name` = "Pietro"  AND `surname` = "Rizzo";
+*/
 
+UPDATE 
+	`teachers`
+SET 
+	`office_number` = 999
+WHERE
+	`id` = 58;
+	
+---------------------------------------------------------------------
+--Eliminare dalla tabella studenti il record creato precedentemente al punto 9--------------11
+DELETE FROM `exam_student`
+WHERE `student_id` = 1;
+
+DELETE FROM `students`
+WHERE `id` = 1;
 
 
 
